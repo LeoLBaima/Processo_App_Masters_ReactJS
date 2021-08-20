@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header { 
+    height: 106px;
+    width: 100%;
+    
+    background: #474747;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.line {
+    height: 1px;
+    background-color: #FAFF00;
+    width: 100%;
+}
+
+.logo-title {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 60px;
+    font-weight: bold;
+
+    color: #FAFF00;
+}

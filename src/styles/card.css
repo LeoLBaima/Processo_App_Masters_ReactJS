@@ -1,0 +1,33 @@
+.card {
+    height: 260px;
+    width: 160px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    text-align: center;
+    font-size: 15px;
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: bold;
+
+    background: #FAFF00;
+
+    border-radius: 10px;
+    overflow: hidden;
+
+    transition: 0.2s;
+    cursor: pointer;
+    
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.card:hover {
+    opacity: 0.8;
+}
+.card img {
+    margin-top: -12px;
+}
+.card p{
+    margin-top: 5px;
+}
