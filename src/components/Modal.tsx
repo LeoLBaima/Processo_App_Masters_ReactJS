@@ -2,6 +2,7 @@ import React from 'react'
 import '../styles/modal.css'
 
 import { Hero, Biography } from '../pages/Home'
+import { StarRating } from './StarRating'
 
 type Functions = {
     onClose: (event: React.MouseEvent<HTMLButtonElement>) => void
@@ -26,7 +27,15 @@ export function Modal(props: Hero & Biography & Functions) {
                     Parentes: {props.connections?.relatives}.<br />
                     Status de Poder: Combate: {props.powerstats?.combat}, Durabilidade: {props.powerstats?.durability}, Inteligencia: {props.powerstats?.intelligence}, Poder: {props.powerstats?.power},
                     Velocidade: {props.powerstats?.speed}, Força: {props.powerstats?.strength}.<br />
+                    <div className="ratings">
+                        <StarRating />
+                        <h4>Já vi nas HQs <input type="radio" /></h4>
+                    </div>
+
+
                 </div>
+
+
             </div>
         </div>
     )
