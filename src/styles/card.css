@@ -31,3 +31,7 @@
 .card p{
     margin-top: 5px;
 }
+.link-card {
+    text-decoration: none;
+    color: black;
+}
