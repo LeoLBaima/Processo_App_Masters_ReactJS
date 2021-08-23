@@ -27,3 +27,25 @@
 
     color: #FAFF00;
 }
+
+@media (max-width: 567px) {
+    .logo-title {
+        font-size: 30px;
+    }
+}
+@media (min-width: 568px) {
+    .logo-title {
+        font-size: 40px;
+    }
+}
+
+@media (min-width: 861px) {
+    .logo-title {
+        font-size: 50px;
+    }
+}
+@media (min-width: 1000px) {
+    .logo-title {
+        font-size: 60px;
+    }
+}
