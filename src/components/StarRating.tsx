@@ -1,14 +1,35 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { FaStar } from 'react-icons/fa'
 import '../styles/starRating.css'
 
-export function StarRating() {
+import { Hero } from '../pages/Home'
+
+export type RatingProps = {
+    rating?: number;
+}
+
+
+export function StarRating(props: RatingProps & Hero) {
     const [rating, setRating] = useState(0)
     const [hover, setHover] = useState(0)
+
+
+
+    useEffect(() => {
+        const data = localStorage.getItem(`rating${props.id}`)
+        if (data) {
+            setRating(JSON.parse(data))
+        }
+    }, [props.id])
+    useEffect(() => {
+        localStorage.setItem(`rating${props.id}`, JSON.stringify(rating))
+    })
+
     return (
         <div>
             {[...Array(5)].map((star, i) => {
-                const ratingValue = i + 1
+                const ratingValue = i + 1;
+
                 return (
                     <label>
                         <input
