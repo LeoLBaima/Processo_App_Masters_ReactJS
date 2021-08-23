@@ -1,7 +1,9 @@
 import { Hero, Biography } from '../pages/Home'
 import { useState } from 'react'
-import '../styles/card.css'
+import { StarRating } from './StarRating'
 import { Modal } from './Modal';
+
+import '../styles/card.css'
 
 type CardProps = {
     title?: string;
@@ -11,6 +13,7 @@ type CardProps = {
 
 export function Card(props: CardProps & Hero & Biography) {
     const [isModalVisible, setIsModalVisible] = useState(false);
+
     return (
         <div>
             <div className="card" onClick={() => setIsModalVisible(true)}>
@@ -19,10 +22,9 @@ export function Card(props: CardProps & Hero & Biography) {
             </div>
             <div>
                 {isModalVisible ?
-                    <div>
+                    <div key={props.id}>
                         <Modal
                             onClose={() => setIsModalVisible(false)}
-                            key={props.id}
                             name={props.name}
                             fullName={props.biography?.fullName}
                             biography={props.biography}
@@ -33,11 +35,13 @@ export function Card(props: CardProps & Hero & Biography) {
                             connections={props.connections}
                             appearance={props.appearance}
                             images={props.images}
-                            id={props.id}
                             placeOfBirth={props.biography?.placeOfBirth}
                             powerstats={props.powerstats}
                             publisher={props.biography?.publisher}
-                        />
+                            id={props.id}
+                        >
+                            <StarRating id={props.id} />
+                        </Modal>
                     </div>
                     : null}
             </div>
