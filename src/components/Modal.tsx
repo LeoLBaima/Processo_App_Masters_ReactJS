@@ -1,14 +1,37 @@
-import React from 'react'
+import React, { ReactNode, useState, useEffect } from 'react'
 import '../styles/modal.css'
 
 import { Hero, Biography } from '../pages/Home'
-import { StarRating } from './StarRating'
 
 type Functions = {
     onClose: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
+type Children = {
+    children: ReactNode
+}
 
-export function Modal(props: Hero & Biography & Functions) {
+export function Modal(props: Hero & Biography & Functions & Children) {
+    const [checked, setChecked] = useState(false)
+
+    useEffect(() => {
+        const data = localStorage.getItem(`check${props.id}`)
+        if (data) {
+            setChecked(JSON.parse(data))
+        }
+    }, [props.id])
+    useEffect(() => {
+        localStorage.setItem(`check${props.id}`, JSON.stringify(checked))
+    })
+
+    function handleCheck() {
+        if (checked) {
+            setChecked(false)
+        }
+        else {
+            setChecked(true)
+        }
+    }
+
     return (
         <div className="modal">
             <div className="container">
@@ -28,8 +51,11 @@ export function Modal(props: Hero & Biography & Functions) {
                     Status de Poder: Combate: {props.powerstats?.combat}, Durabilidade: {props.powerstats?.durability}, Inteligencia: {props.powerstats?.intelligence}, Poder: {props.powerstats?.power},
                     Velocidade: {props.powerstats?.speed}, Força: {props.powerstats?.strength}.<br />
                     <div className="ratings">
-                        <StarRating />
-                        <h4>Já vi nas HQs <input type="radio" /></h4>
+                        {props.children}
+                        <h4>Já vi nas HQs <input type="radio" checked={checked} onChange={handleCheck}
+                            onClick={handleCheck}
+                        />
+                        </h4>
                     </div>
 
 
