@@ -79,12 +79,15 @@ export function Home() {
     return (
         <div className="background">
             <Header />
-            <input
-                type="text"
-                className="header-search"
-                placeholder="Pesquise aqui"
-                onChange={event => { setSearch(event.target.value) }}
-            />
+
+            <div className="holder-search">
+                <input
+                    type="text"
+                    className="input-search"
+                    placeholder="Pesquise aqui"
+                    onChange={event => { setSearch(event.target.value) }}
+                />
+            </div>
 
             <div className="content">
                 {heroes.filter(hero => {
@@ -98,7 +101,7 @@ export function Home() {
                         return false
                     }
                 }).map(hero => {
-                    return <div>
+                    return <div key={hero.id}>
                         <Card
                             key={hero.id}
                             title={hero.name}
@@ -117,6 +120,7 @@ export function Home() {
                             placeOfBirth={hero.biography?.placeOfBirth}
                             powerstats={hero.powerstats}
                             publisher={hero.biography?.publisher}
+                            id={hero.id}
                         />
                     </div>
                 })}
