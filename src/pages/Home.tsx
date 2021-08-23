@@ -77,7 +77,7 @@ export function Home() {
     })
 
     return (
-        <div className="background">
+        <div className="background" id="start">
             <Header />
 
             <div className="holder-search">

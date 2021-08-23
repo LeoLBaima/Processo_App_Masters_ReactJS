@@ -17,8 +17,11 @@ export function Card(props: CardProps & Hero & Biography) {
     return (
         <div>
             <div className="card" onClick={() => setIsModalVisible(true)}>
-                <img src={props.image} alt="hero"></img>
-                <p>{props.title}</p>
+                <a href="#start" className="link-card">
+                    <img src={props.image} alt="hero"></img>
+                    <p>{props.title}</p>
+                </a>
+
             </div>
             <div>
                 {isModalVisible ?
